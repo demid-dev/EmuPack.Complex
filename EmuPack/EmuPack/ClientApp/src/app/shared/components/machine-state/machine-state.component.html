@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col-6">
+    <p class="heading">Machine state</p>
+  </div>
+  <div class="col-2">
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn dispensing-btn" (click)="refreshMachineState()">Refresh machine state</button>
+  </div>
+  <div class="col-2">
+    <button type="button"
+            class="btn dispensing-btn"
+            [disabled]="this.machineState.drawerLocked"
+            (click)="changeAdaptorState()">
+      Change adaptor state
+    </button>
+  </div>
+</div>
+<div class="row" *ngIf="this.machineState.drawerLocked">
+  <div class="col-8"></div>
+  <div class="col-4 text-end">
+    <small class="error">Adaptor state cannot be changed if drawer is locked</small>
+  </div>
+</div>
+<div class="row">
+  <div class="col-8"></div>
+  <div class="col-4 text-end">
+    <small>Machine state last time refreshed: {{this.machineStateRefreshedTime | date: "mediumTime"}}</small>
+  </div>
+</div>
+<hr class="machine-state-divider"/>
+
+<ul class="list-group">
+  <li class="list-group-item">Adaptor state inside the drawer: <span
+    class="machine-state-value">{{this.machineState.adaptor?.adaptorInsideMachine}}</span></li>
+  <li class="list-group-item">Drawer locked: <span class="machine-state-value">{{this.machineState.drawerLocked}}</span>
+  </li>
+  <li class="list-group-item">Registered prescriptions ID's:
+    <span *ngFor="let prescription of machineState.registredPrescriptions; let idx = index">
+      <a (click)="getPrescriptionDetails(prescription.id)" class="machine-state-value">{{prescription.id}}</a>
+      <span *ngIf="idx != machineState.registredPrescriptions.length - 1">, </span>
+    </span>
+    <span *ngIf="machineState.registredPrescriptions.length == 0"
+          class="machine-state-value">none prescriptions were registered
+    </span>
+  </li>
+  <li class="list-group-item">Warning cassettes ID's:
+    <span *ngFor="let cassette of machineState.warningCassettesIds"
+          class="machine-state-value">
+      {{cassette}}
+    </span>
+    <span *ngIf="machineState.warningCassettesIds.length == 0"
+          class="machine-state-value">none cassettes are warning
+    </span>
+  </li>
+</ul>
+
+<div class="row">
+  <div class="col-6">
+    <p class="heading">Drug pack</p>
+  </div>
+  <div class="col-4">
+  </div>
+  <div class="col-2">
+    <button type="button"
+            class="btn dispensing-btn"
+            [disabled]="this.machineState.drawerLocked"
+            (click)="clearDrugPack()">
+      Clear drug pack
+    </button>
+  </div>
+</div>
+<div class="row" *ngIf="this.machineState.drawerLocked">
+  <div class="col-8"></div>
+  <div class="col-4 text-end">
+    <small class="error">Drug pack cannot be cleared if drawer is locked</small>
+  </div>
+</div>
+
+<hr class="machine-state-divider"/>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">Cell</th>
+      <th scope="col">Packed medications</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cell of this.machineState?.adaptor?.drugPack?.drugCells">
+      <td>{{cell.cellName}}</td>
+      <td>
+        <span *ngFor="let drug of cell.drugsInCell; let idx = index;">{{drug.drugName}} (quantity: {{drug.drugQuantity}}
+          )<span *ngIf="idx != cell.drugsInCell.length -1">, </span></span>
+        <span *ngIf="cell.drugsInCell.length==0">No drugs packed</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<button type="button" data-bs-toggle="modal" data-bs-target="#prescriptionModal" #prescriptionModalButton hidden>
+</button>
+
+<div class="modal fade" id="prescriptionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Prescription details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+          <li class="list-group-item">Registered prescription ID:
+            <span class="machine-state-value">{{this.selectedPrescription?.id}}</span>
+          </li>
+          <li class="list-group-item">Registered medications:
+            <span class="machine-state-value"
+                  *ngFor="let cassette of this.selectedPrescription?.registredCassettes; let idx = index;">
+              <span>{{cassette.drugName | medicationName}} (cassette: {{cassette.cassetteId}})</span>
+              <span *ngIf="(idx + 1) != this.selectedPrescription?.registredCassettes?.length">, </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

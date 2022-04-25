@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EmuPack.Models.Commands.Command">
+    <Position X="9" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAQAAAAARCAAAKABARAAIAAAAAACAAAQAAAAA=</HashCode>
+      <FileName>Models\Commands\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.CommandResponse">
+    <Position X="15.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAQABAACAAAAACAAAQAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Commands\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.FillCommand">
+    <Position X="7.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAYAARAAAAAQBAAAAAAQAAACAAAAAAACAY=</HashCode>
+      <FileName>Models\Commands\FillCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.FillCommandResponse">
+    <Position X="13.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Commands\FillCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.InitializationCommand">
+    <Position X="10.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Commands\InitializationCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.InitialiaztionCommandResposne">
+    <Position X="17" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Commands\InitializationCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.MachineActivityRequestCommand">
+    <Position X="10.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAABBAAAAIAA=</HashCode>
+      <FileName>Models\Commands\MachineActivityRequestCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.MachineActivityRequestCommandResponse">
+    <Position X="17" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Commands\MachineActivityRequestCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.NotRecognizedRequestResponse">
+    <Position X="13.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Commands\NotRecognizedRequestResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.PrescriptionRegistrationCommand">
+    <Position X="7.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAARIAIAAABACAAAQAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\Commands\PrescriptionRegistrationCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.RxRegistrationCommandDrug">
+    <Position X="5.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAIAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Models\Commands\PrescriptionRegistrationCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.PrescriptionRegistrationCommandResponse">
+    <Position X="14.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Commands\PrescriptionRegistrationCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.StatusRequestCommand">
+    <Position X="10.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Commands\StatusRequestCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.StatusRequestCommandResposne">
+    <Position X="16" Y="8.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="EmuPack.Models.Commands.StatusRequestCommandResposne.StatusRequestCommandResposneValues" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Commands\StatusRequestCommand.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAABAAAQAAAIAAAAAAAAAAAAAAAAAFAAAAAAA=</HashCode>
+      <FileName>Models\Commands\StatusRequestCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Commands.CassetteUsedInFilling">
+    <Position X="5.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\Commands\FillCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Machine.Adaptor">
+    <Position X="20" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAIgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Machine\Adaptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Machine.DrugPack">
+    <Position X="23.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\Machine\Adaptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Machine.DrugCell">
+    <Position X="23.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Machine\Adaptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Machine.DrugInCell">
+    <Position X="23.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAABAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Models\Machine\Adaptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Machine.Cassette">
+    <Position X="20" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAABIAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Models\Machine\Cassette.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Machine.MachineState">
+    <Position X="21.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARAAAAAAABAAAAIAAAAAAEAAAAAAAAAAAAEAAAAAEAA=</HashCode>
+      <FileName>Models\Machine\MachineState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Models.Machine.RegistredPrescription">
+    <Position X="21.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Machine\RegistredPrescription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Services.EmulatedMachine">
+    <Position X="25.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAUAAAAEAgAAEACAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Services\EmulatedMachine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmuPack.Controllers.EmulatorController">
+    <Position X="27.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAggAAAAAAAAAAAIAgAAAQAAQAAAAAAAAA=</HashCode>
+      <FileName>Controllers\EmulatorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
