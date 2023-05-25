@@ -1,9 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Form, FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import {IDispensingOperation, IUsedPod} from "../../models/dispensing-operation";
-import {noPodGreaterThanZero} from "../../validators/used-pods.validator";
-import {IDispensingDrugDTO, IDispensingOperationDTO, IUsedPodDTO} from "../../api-models/dispensing-operation-dto";
-import {CommandsService} from "../../services/commands.service";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Form, FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
+import { IDispensingOperation, IUsedPod } from "../../models/dispensing-operation";
+import { noPodGreaterThanZero } from "../../validators/used-pods.validator";
+import { IDispensingDrugDTO, IDispensingOperationDTO, IUsedPodDTO } from "../../api-models/dispensing-operation-dto";
+import { CommandsService } from "../../services/commands.service";
 
 @Component({
   selector: 'app-dispensing-form',
@@ -44,7 +44,7 @@ export class DispensingFormComponent implements OnInit {
   }
 
   createUsedPodsArray(): FormArray {
-    const usedPods = new FormArray([]);
+    const usedPods = new FormArray<any>([]);
     for (let i = 0; i < 7; i++) {
       usedPods.push(new FormGroup({
         podPosition: new FormControl(`A` + i),
@@ -136,7 +136,7 @@ export class DispensingFormComponent implements OnInit {
 
   lockSubmitButton(elem: ElementRef) {
     elem.nativeElement.disabled = true;
-    setTimeout(()=>{
+    setTimeout(() => {
       elem.nativeElement.disabled = false;
     }, 3000);
   }
