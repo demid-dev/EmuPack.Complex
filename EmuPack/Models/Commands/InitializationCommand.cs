@@ -24,12 +24,13 @@ namespace EmuPack.Models.Commands
             return true;
         }
 
-        public override CommandResponse Execute(MachineState machineState)
+        public override async Task<CommandResponse> ExecuteAsync(MachineState machineState)
         {
             if (!IsCommandValid)
             {
                 return new InitialiaztionCommandResposne(CommandResponseCodes.WrongCommandFormat);
             }
+            await DelayCommand(InitializationCommandValues.ExecutionTime);
 
             machineState.ReinitilizeState();
             return new InitialiaztionCommandResposne(CommandResponseCodes.Sucess);
@@ -39,10 +40,12 @@ namespace EmuPack.Models.Commands
     static class InitializationCommandValues
     {
         static public string CommandId { get; private set; }
+        static public int ExecutionTime { get; private set; }
 
         static InitializationCommandValues()
         {
             CommandId = "IN";
+            ExecutionTime = 5000;
         }
     }
 

@@ -39,7 +39,7 @@ namespace EmuPack.Models.Commands
             IsCommandValid = ValidateCommand(commandString);
         }
 
-        public override CommandResponse Execute(MachineState machineState)
+        public override async Task<CommandResponse> ExecuteAsync(MachineState machineState)
         {
             if (!IsCommandValid)
             {
@@ -49,6 +49,7 @@ namespace EmuPack.Models.Commands
             {
                 return new PrescriptionRegistrationCommandResponse(CommandResponseCodes.MachineBlockedCommand);
             }
+            await DelayCommand(PrescriptionRegistrationCommandValues.ExecutionTime);
             RegisterPrescription(machineState);
 
             return new PrescriptionRegistrationCommandResponse(CommandResponseCodes.Sucess);
@@ -157,6 +158,7 @@ namespace EmuPack.Models.Commands
         public string CassetteId { get; private set; }
         public string DrugName { get; private set; }
         public string QuantityPerCassette { get; private set; }
+        static public int ExecutionTime { get; private set; }
 
         public RxRegistrationCommandDrug(string cassetteId,
             string drugName, string quantityPerCassette)
@@ -164,6 +166,7 @@ namespace EmuPack.Models.Commands
             CassetteId = cassetteId;
             DrugName = drugName;
             QuantityPerCassette = quantityPerCassette;
+            ExecutionTime = 0;
         }
     }
 

@@ -2,6 +2,7 @@
 using EmuPack.Models.Machine;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -16,11 +17,12 @@ namespace EmuPack.Services
     public class EmulatedMachine
     {
         private readonly ILogger<EmulatedMachine> _logger;
+        private readonly CommandHandler _commandHandler;
+        private readonly ConcurrentQueue<string> _messagesQueue;
 
         private TcpClient _client;
         private NetworkStream _stream;
         private TcpListener _listener;
-        private CommandHandler _commandHandler;
 
         public MachineState MachineState { get; private set; }
 
@@ -29,6 +31,7 @@ namespace EmuPack.Services
             _logger = logger;
 
             _commandHandler = new CommandHandler();
+            _messagesQueue = new ConcurrentQueue<string>();
             MachineState = new MachineState();
 
             _client = new TcpClient();
@@ -36,21 +39,27 @@ namespace EmuPack.Services
 
             Thread acceptConnectionThhread = new Thread(new ThreadStart(AcceptConnection));
             acceptConnectionThhread.Start();
+            Task.Run(async () =>
+            {
+                await ParseQueue();
+            });
         }
 
-        public void AcceptConnection()
+        private void AcceptConnection()
         {
             _listener.Start();
             while (true)
             {
                 _client = _listener.AcceptTcpClient();
                 _stream = _client.GetStream();
-                Thread receiveThread = new Thread(new ThreadStart(ReceiveMessage));
-                receiveThread.Start();
+                Task.Run(async () =>
+                {
+                    await ReceiveMessageAsync();
+                });
             }
         }
 
-        public void ReceiveMessage()
+        private async Task ReceiveMessageAsync()
         {
             byte[] data = new byte[99999];
             try
@@ -62,20 +71,15 @@ namespace EmuPack.Services
                     int bytes = 0;
                     do
                     {
-                        bytes = _stream.Read(data, 0, data.Length);
+                        bytes = await _stream.ReadAsync(data);
                         builder.Append(Encoding.ASCII.GetString(data, 0, bytes));
                     }
                     while (_stream.DataAvailable);
 
                     string message = builder.ToString();
                     _logger.LogInformation($"Receive command: {message}");
-                    string response = GetResponseFromProcessedMessage(message);
-                    _stream.Write(Encoding.ASCII.GetBytes(response), 0, response.Length);
-                    _logger.LogInformation($"Send command: {response}");
+                    _messagesQueue.Enqueue(message);
                 }
-            }
-            catch (Exception ex)
-            {
             }
             finally
             {
@@ -86,10 +90,34 @@ namespace EmuPack.Services
             }
         }
 
-        public string GetResponseFromProcessedMessage(string message)
+        private async Task ParseQueue()
         {
-            string messageToReturn = _commandHandler.ExecuteCommand(MachineState, message).Response;
-            return messageToReturn;
+            try
+            {
+                while (true)
+                {
+                    bool dequeued = _messagesQueue.TryDequeue(out string message);
+                    if (dequeued)
+                    {
+                        string response = await GetResponseFromProcessedMessageAsync(message);
+                        await _stream.WriteAsync(Encoding.ASCII.GetBytes(response).AsMemory(0, response.Length));
+                        _logger.LogInformation($"Send command: {response}");
+                    }
+                }
+            }
+            finally
+            {
+                if (_stream != null)
+                    _stream.Close();
+                if (_client != null)
+                    _client.Close();
+            }
+        }
+
+        public async Task<string> GetResponseFromProcessedMessageAsync(string message)
+        {
+            var executedCommand = await _commandHandler.ExecuteCommand(MachineState, message);
+            return executedCommand.Response;
         }
     }
 }

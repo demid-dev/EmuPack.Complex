@@ -47,7 +47,8 @@ namespace EmuPack.Models.Commands
 
             return true;
         }
-        public abstract CommandResponse Execute(MachineState machineState);
+
+        public abstract Task<CommandResponse> ExecuteAsync(MachineState machineState);
 
         private bool ValidateDataLength(string commandString)
         {
@@ -95,6 +96,11 @@ namespace EmuPack.Models.Commands
         protected virtual bool ValidateCommandByMachine(MachineState machineState)
         {
             return true;
+        }
+
+        protected virtual async Task DelayCommand(int executionTime)
+        {
+            await Task.Delay(executionTime);
         }
     }
 

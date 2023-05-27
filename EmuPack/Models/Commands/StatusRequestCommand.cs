@@ -24,13 +24,15 @@ namespace EmuPack.Models.Commands
             return true;
         }
 
-        public override CommandResponse Execute(MachineState machineState)
+        public override async Task<CommandResponse> ExecuteAsync(MachineState machineState)
         {
             if (!IsCommandValid)
             {
                 return new StatusRequestCommandResposne(CommandResponseCodes.WrongCommandFormat,
                     machineState);
             }
+            await DelayCommand(StatusRequestCommandValues.ExecutionTime);
+
             return new StatusRequestCommandResposne(CommandResponseCodes.Sucess,
                 machineState);
         }
@@ -39,10 +41,12 @@ namespace EmuPack.Models.Commands
     static class StatusRequestCommandValues
     {
         static public string CommandId { get; private set; }
+        static public int ExecutionTime { get; private set; }
 
         static StatusRequestCommandValues()
         {
             CommandId = "SR";
+            ExecutionTime = 0;
         }
     }
 
@@ -115,7 +119,6 @@ namespace EmuPack.Models.Commands
             static public string DataLengthWrong { get; private set; }
             static public int RegistredPrescriptionsQuantityLength { get; private set; }
             static public int WarningCassettesQuantityLength { get; private set; }
-
 
             static StatusRequestCommandResposneValues()
             {

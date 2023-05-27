@@ -9,7 +9,7 @@ namespace EmuPack.Models.Commands
 {
     public class CommandHandler
     {
-        public CommandResponse ExecuteCommand(MachineState machineState, string commandString)
+        public async Task<CommandResponse> ExecuteCommand(MachineState machineState, string commandString)
         {
             string index = GetCommandStringIndex(commandString);
             bool indexIsValid = ValidateCommandIndex(index);
@@ -18,7 +18,8 @@ namespace EmuPack.Models.Commands
                 return GetNotRecongnizedCommand();
             }
 
-            return GetCommand(index, commandString).Execute(machineState);
+            var command = GetCommand(index, commandString);
+            return await command.ExecuteAsync(machineState);
         }
 
         private string GetCommandStringIndex(string commandString)

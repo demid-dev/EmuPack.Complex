@@ -51,7 +51,7 @@ namespace EmuPack.Models.Commands
             IsCommandValid = ValidateCommand(commandString);
         }
 
-        public override CommandResponse Execute(MachineState machineState)
+        public override async Task<CommandResponse> ExecuteAsync(MachineState machineState)
         {
             if (!IsCommandValid)
             {
@@ -62,6 +62,8 @@ namespace EmuPack.Models.Commands
 
                 return new FillCommandResponse(CommandResponseCodes.MachineBlockedCommand);
             }
+
+            await DelayCommand(FillCommandValues.ExecutionTime);
             ExecuteFilling(machineState);
 
             return new FillCommandResponse(CommandResponseCodes.Sucess);
@@ -251,6 +253,7 @@ namespace EmuPack.Models.Commands
         static public int QuantityOfDrugMaxValue { get; private set; }
         static public int QuantityOfDrugStartIndex { get; private set; }
         static public int QuantityOfDrugLength { get; private set; }
+        static public int ExecutionTime { get; private set; }
 
         static FillCommandValues()
         {
@@ -287,6 +290,7 @@ namespace EmuPack.Models.Commands
             QuantityOfDrugMaxValue = 99;
             QuantityOfDrugStartIndex = 24;
             QuantityOfDrugLength = 2;
+            ExecutionTime = 6000;
         }
     }
 

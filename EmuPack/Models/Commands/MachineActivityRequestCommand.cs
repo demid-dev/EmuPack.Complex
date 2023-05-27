@@ -45,10 +45,12 @@ namespace EmuPack.Models.Commands
             return true;
         }
 
-        public override CommandResponse Execute(MachineState machineState)
+        public override async Task<CommandResponse> ExecuteAsync(MachineState machineState)
         {
             if (!IsCommandValid)
                 return new MachineActivityRequestCommandResponse(CommandResponseCodes.WrongCommandFormat);
+            await DelayCommand(MachineActivityRequestValues.ExecutionTime);
+
             if (DrawerStatus == MachineActivityRequestValues.DrawerStatusPossibleValues[0])
             {
                 machineState.ChangeDrawerStatus(drawerLocked: true);
@@ -78,6 +80,7 @@ namespace EmuPack.Models.Commands
         static public string[] ClearingWarningsInitiatedPossibleValues { get; private set; }
         static public int ClearingWarningsInitiatedStartIndex { get; private set; }
         static public int ClearingWarningsInitiatedLength { get; private set; }
+        static public int ExecutionTime { get; private set; }
 
         static MachineActivityRequestValues()
         {
@@ -91,6 +94,7 @@ namespace EmuPack.Models.Commands
             ClearingWarningsInitiatedPossibleValues = new string[] { "00", "01" };
             ClearingWarningsInitiatedStartIndex = 14;
             ClearingWarningsInitiatedLength = 2;
+            ExecutionTime = 0;
         }
     }
 
