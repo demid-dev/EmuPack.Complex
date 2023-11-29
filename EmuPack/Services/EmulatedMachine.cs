@@ -64,11 +64,9 @@ namespace EmuPack.Services
                 while (true)
                 {
                     StringBuilder builder = new StringBuilder();
-
-                    int bytes = 0;
                     do
                     {
-                        bytes = await _stream.ReadAsync(data);
+                        int bytes = await _stream.ReadAsync(data);
                         builder.Append(Encoding.ASCII.GetString(data, 0, bytes));
                     }
                     while (_stream.DataAvailable);
