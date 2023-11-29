@@ -1,12 +1,8 @@
 ﻿using EmuPack.Control.DTOs;
 using EmuPack.Control.Models.Commands;
-using EmuPack.Control.Models.Machine;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace EmuPack.Control.Services.Operations
 {

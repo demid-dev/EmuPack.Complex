@@ -2,7 +2,6 @@
 using EmuPack.Control.Models.Commands;
 using EmuPack.Control.Models.Machine;
 using System;
-using System.Diagnostics;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;

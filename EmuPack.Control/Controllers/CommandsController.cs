@@ -1,15 +1,7 @@
 ﻿using EmuPack.Control.DTOs;
-using EmuPack.Control.Models.Commands;
-using EmuPack.Control.Models.Responses;
 using EmuPack.Control.Services;
 using EmuPack.Control.Services.Operations;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EmuPack.Control.Controllers
 {

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://localhost:44302',
-  hubUrl: 'https://localhost:44302/notification-hub',
+  api: 'https://localhost:5001',
+  hubUrl: 'https://localhost:5001/notification-hub',
 };
 
 /*

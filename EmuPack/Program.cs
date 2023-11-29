@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using NLog.Web;
 using NLog;
+using NLog.Web;
+using System;
 
 namespace EmuPack
 {

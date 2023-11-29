@@ -1,10 +1,7 @@
 ﻿using EmuPack.Control.Models.Commands;
 using EmuPack.Control.Models.Machine;
 using EmuPack.Control.Models.Responses;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EmuPack.Control.Services
 {
@@ -17,7 +14,7 @@ namespace EmuPack.Control.Services
             _notificationService = notificationService;
         }
 
-        public void ProcessResponse(string response, 
+        public void ProcessResponse(string response,
             MachineState machineState)
         {
             CommandResponse commandResponse = new CommandResponse(response);
@@ -35,7 +32,7 @@ namespace EmuPack.Control.Services
             }
         }
 
-        private void ProcessStatusResponse(StatusCommandResponse response, 
+        private void ProcessStatusResponse(StatusCommandResponse response,
             MachineState machineState)
         {
             if (response.WarningCassettesIds.Any())

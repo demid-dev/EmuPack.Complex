@@ -1,8 +1,5 @@
 ﻿using EmuPack.Control.Models.Responses;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EmuPack.Control.Models.Machine
 {

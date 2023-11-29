@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace EmuPack.Control.DTOs
+﻿namespace EmuPack.Control.DTOs
 {
     public class MachineActivityRequestCommandDTO
     {

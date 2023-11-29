@@ -2,10 +2,7 @@
 using EmuPack.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EmuPack.Controllers
 {
@@ -32,6 +29,7 @@ namespace EmuPack.Controllers
         [HttpGet("prescriptions")]
         public ActionResult<IEnumerable<RegistredPrescription>> GetAllRegistredPrescriptions()
         {
+
             return Ok(_emulatedMachine.MachineState.RegistredPrescriptions);
         }
 
