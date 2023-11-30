@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmuPack", "EmuPack\EmuPack.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmuPack.Control", "EmuPack.Control\EmuPack.Control.csproj", "{CF44774E-022D-46CF-97F8-A8C92AA34185}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmuPack.SimpleClient", "EmuPack.SimpleClient\EmuPack.SimpleClient.csproj", "{3B4B31C3-3009-4BB9-9208-1956BD64D621}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CF44774E-022D-46CF-97F8-A8C92AA34185}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF44774E-022D-46CF-97F8-A8C92AA34185}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF44774E-022D-46CF-97F8-A8C92AA34185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B4B31C3-3009-4BB9-9208-1956BD64D621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B4B31C3-3009-4BB9-9208-1956BD64D621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B4B31C3-3009-4BB9-9208-1956BD64D621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B4B31C3-3009-4BB9-9208-1956BD64D621}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,6 +13,8 @@ namespace EmuPack.Services
 {
     public class EmulatedMachine
     {
+        private const int END_BYTE_VALUE = 0;
+
         private readonly ILogger<EmulatedMachine> _logger;
         private readonly CommandHandler _commandHandler;
         private readonly ConcurrentQueue<string> _messagesQueue;
@@ -58,20 +60,22 @@ namespace EmuPack.Services
 
         private async Task ReceiveMessageAsync()
         {
-            byte[] data = new byte[99999];
+            byte[] data = new byte[1024];
             try
             {
                 while (true)
                 {
                     StringBuilder builder = new StringBuilder();
+                    int bytes = 0;
                     do
                     {
-                        int bytes = await _stream.ReadAsync(data);
+                        bytes = await _stream.ReadAsync(data);
                         builder.Append(Encoding.ASCII.GetString(data, 0, bytes));
                     }
                     while (_stream.DataAvailable);
 
                     string message = builder.ToString();
+                    if (bytes == END_BYTE_VALUE) break;
                     _logger.LogInformation($"Receive command: {message}");
                     _messagesQueue.Enqueue(message);
                 }

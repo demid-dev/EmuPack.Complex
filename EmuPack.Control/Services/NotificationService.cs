@@ -19,7 +19,6 @@ namespace EmuPack.Control.Services
 
         public async void SendTcpConnectionErrorNotification(string hostname, int port)
         {
-            Debug.WriteLine("agoga");
             await _hubContext.Clients.All.SendAsync("ReceiveNotification",
                 GenerateNotificationDTO(NotificationType.TcpConnectionError, GenerateTcpWarningFields(hostname, port)));
         }
@@ -42,7 +41,6 @@ namespace EmuPack.Control.Services
         {
             if (adaptorInDrawer && prescriptionNotRegistred)
             {
-                Debug.WriteLine("ASDASD");
                 await _hubContext.Clients.All.SendAsync("ReceiveNotification",
                     GenerateNotificationDTO(NotificationType.DispensingSucessful, new List<WarningFieldDTO>()));
             }
