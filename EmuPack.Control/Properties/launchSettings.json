@@ -19,9 +19,8 @@
     },
     "EmuPack.Control": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
+      "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "swagger",
       "applicationUrl": "https://localhost:5001;http://localhost:4999",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
